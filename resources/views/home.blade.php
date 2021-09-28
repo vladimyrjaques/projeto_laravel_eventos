@@ -1,7 +1,7 @@
 @extends('layouts.main')
 <style>
 header {
-    position: fixed !important;
+    position: absolute !important;
     background-color: #ffffff33 !important;
 }
 

@@ -17,7 +17,7 @@
                 <img src="/img/events/{{$event->image}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-date">{{ date('d/m/Y', strtotime($event->date)) }}</p>
-                    <a href="/events/{{ $event->id }}">
+                    <a href="/events/{{ $event->id }}" class="card-link">
                         <h3 class="card-title">{{$event->title}}</h3>
                     </a>
                     <p class="card-participants">{{count($event->users)}} Participantes</p>
@@ -46,7 +46,7 @@
                 <img src="/img/events/{{$event->image}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-date">{{ date('d/m/Y', strtotime($event->date)) }}</p>
-                    <a href="/events/{{ $event->id }}">
+                    <a href="/events/{{ $event->id }}" class="card-link" >
                         <h3 class="card-title">{{$event->title}}</h3>
                     </a>
                     <p class="card-participants">{{count($event->users)}} Participantes</p>

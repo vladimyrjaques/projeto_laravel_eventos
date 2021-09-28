@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Event;
 use App\Models\User;
+use SendGrid\Mail\Mail;
 
 class EventController extends Controller
 {
@@ -104,5 +105,14 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
 
         return redirect('/dashboard')->with('msg','Desistência confirmada no evento '.$event->title );
+    }
+
+    public function sendEmail($id) {
+        $user = auth()->user();
+        $event = Event::findOrFail($id);
+        Mail::send('mail.sendEmail',['event' => $event],function ($message){
+            $message->from('tvmodsgtasa@gmail.com', 'Vladimyr');
+            $message->to('vladimyrjaques@hotmail.com');
+        });
     }
 }

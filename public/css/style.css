@@ -15,6 +15,7 @@ header {
 
 a.area-logo {
     width: fit-content;
+    width: -moz-fit-content;
     margin: auto;
 }
 
@@ -93,6 +94,7 @@ section.prox-events h2 {
     position: relative;
     margin: auto;
     width: fit-content;
+    width: -moz-fit-content;
     margin-bottom: 25px;
     text-transform: uppercase;
     color: #1c3144;
@@ -143,12 +145,51 @@ section.single-events .conteudo-event h2 {
     grid-column: 1/-1;
 }
 
+.share-icons i {
+    font-size: 45px;
+    background-color: white;
+}
+
+.share-icons i:hover {
+    transform: scale(1.1);
+}
+
+.share-icons i.fab.fa-whatsapp-square {
+    transition: transform 0.5s;
+    color: #34af23;
+}
+
+.share-icons i.fab.fa-facebook-square {
+    transition: transform 0.5s;
+    color: #3b5998;
+}
+
+.share-icons i.fab.fa-twitter-square {
+    transition: transform 0.5s;
+    color: #00aced;
+}
+
+.share-icons i.fab.fa-linkedin {
+    transition: transform 0.5s;
+    color: #007bb6;
+}
+
+.share-icons i.fas.fa-envelope-square {
+    transition: transform 0.5s;
+    color: #23282d;
+}
+
 section.page-meus-eventos {
     min-height: 81vh;
 }
 
 section.page-meus-eventos h1 {
     margin-bottom: 20px;
+}
+
+.card-body a.card-link {
+    color: #1c3144;
+    text-decoration-color: #1c3144;
 }
 
 footer {
@@ -179,6 +220,16 @@ footer p {
 
     section.page-principal {
         grid-template-columns: 1fr;
+    }
+
+    section.single-events {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 576px) {
+    .spacing {
+        padding: 50px 10px;
     }
 }
 

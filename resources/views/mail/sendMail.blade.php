@@ -1,0 +1,1 @@
+Presença confirmada no Evento {{ $event->title }}
