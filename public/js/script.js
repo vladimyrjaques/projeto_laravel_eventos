@@ -2,7 +2,7 @@ function initSupportSocialShare() {
     //conteúdo que será compartilhado: Título da página + URL
     var url = encodeURIComponent(window.location.href); //url
     var titulo = encodeURIComponent(document.title); //título
-    var conteudo = encodeURIComponent(titulo + url);
+    var conteudo = encodeURIComponent(url + titulo);
     //altera a URL do botão
     document.getElementById("fa-whatsapp-square").href = "https://api.whatsapp.com/send?text=" + conteudo;
     document.getElementById("fa-facebook-square").href = "https://www.facebook.com/sharer/sharer.php?u=" + url;

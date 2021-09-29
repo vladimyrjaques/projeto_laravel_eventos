@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Event;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -16,9 +17,9 @@ class sendMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Event $event)
     {
-        //
+        $this->event = $event;
     }
 
     /**
@@ -28,6 +29,6 @@ class sendMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.sendMail');
+        return $this->markdown('mail.sendMail')->with(['event' => $this->event]);
     }
 }

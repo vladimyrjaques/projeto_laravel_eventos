@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\sendMail;
 use Illuminate\Http\Request;
 
 use App\Models\Event;
 use App\Models\User;
-use SendGrid\Mail\Mail;
+// use SendGrid\Mail\Mail;
+use Illuminate\Support\Facades\Mail;
 
 class EventController extends Controller
 {
@@ -86,6 +88,8 @@ class EventController extends Controller
     }
 
     public function destroy($id) {
+        $event = Event::findOrFail($id);
+        Mail::to('vjeventos@vjeventos')->send(new sendMail($event));
         Event::findOrFail($id)->delete();
 
         return redirect('/dashboard')->with('msg', 'Evento excluído com sucesso');
@@ -95,7 +99,8 @@ class EventController extends Controller
         $user = auth()->user();
         $user->eventsAsParticipant()->attach($id);
         $event = Event::findOrFail($id);
-
+    
+        
         return redirect('/dashboard')->with('msg','Presença confirmada no evento '.$event->title );
     }
     
@@ -107,12 +112,9 @@ class EventController extends Controller
         return redirect('/dashboard')->with('msg','Desistência confirmada no evento '.$event->title );
     }
 
-    public function sendEmail($id) {
-        $user = auth()->user();
-        $event = Event::findOrFail($id);
-        Mail::send('mail.sendEmail',['event' => $event],function ($message){
-            $message->from('tvmodsgtasa@gmail.com', 'Vladimyr');
-            $message->to('vladimyrjaques@hotmail.com');
-        });
-    }
+    // public function sendEmail() {
+    //     $user = auth()->user();
+    //     Mail::to('vjeventos@vjeventos')->send(new sendMail());
+    //     return new sendMail();
+    // }
 }
