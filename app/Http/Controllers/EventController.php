@@ -89,8 +89,11 @@ class EventController extends Controller
 
     public function destroy($id) {
         $event = Event::findOrFail($id);
-        Mail::to('vjeventos@vjeventos')->send(new sendMail($event));
+        foreach($event->users as $user){
+            $user->eventsAsParticipant()->detach($id);
+        }
         Event::findOrFail($id)->delete();
+        Mail::to('vjeventos@vjeventos')->send(new sendMail($event));
 
         return redirect('/dashboard')->with('msg', 'Evento excluído com sucesso');
     }
